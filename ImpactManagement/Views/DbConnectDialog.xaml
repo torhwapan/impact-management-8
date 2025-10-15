@@ -1,0 +1,49 @@
+<Window x:Class="ImpactManagement.Views.DbConnectDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="DB Connect" Height="350" Width="450" 
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="DB Connect Details" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,10">
+            <Label Content="Connect Name:" FontWeight="SemiBold"/>
+            <TextBox Name="TxtConnectName" Padding="5" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,0,0,10">
+            <Label Content="IP:" FontWeight="SemiBold"/>
+            <TextBox Name="TxtIp" Padding="5" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Margin="0,0,0,10">
+            <Label Content="Port:" FontWeight="SemiBold"/>
+            <TextBox Name="TxtPort" Padding="5" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Margin="0,0,0,10">
+            <Label Content="Schema:" FontWeight="SemiBold"/>
+            <TextBox Name="TxtSchema" Padding="5" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Name="BtnSave" Content="Save" Width="80" Height="30" Margin="0,0,10,0" 
+                    Background="#4CAF50" Foreground="White" FontWeight="SemiBold" BorderThickness="0"
+                    Click="BtnSave_Click"/>
+            <Button Name="BtnCancel" Content="Cancel" Width="80" Height="30" 
+                    Click="BtnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

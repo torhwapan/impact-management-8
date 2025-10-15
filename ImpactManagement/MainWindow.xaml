@@ -1,0 +1,62 @@
+﻿<Window x:Class="ImpactManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImpactManagement"
+        xmlns:views="clr-namespace:ImpactManagement.Views"
+        xmlns:vm="clr-namespace:ImpactManagement.ViewModels"
+        mc:Ignorable="d"
+        Title="Impact Management System" Height="800" Width="1400" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <!-- DataTemplate for each view -->
+        <DataTemplate DataType="{x:Type vm:DbConnectManageViewModel}">
+            <views:DbConnectManageView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ImpactManageViewModel}">
+            <views:ImpactManageView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ActionManageViewModel}">
+            <views:ActionManageView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ImpactExecuteViewModel}">
+            <views:ImpactExecuteView/>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Navigation Menu -->
+        <Border Grid.Row="0" Background="#2196F3" Padding="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Command="{Binding ShowDbConnectCommand}" 
+                        Content="DB Connect Manage" 
+                        Margin="5" Padding="15,8" 
+                        Background="White" FontWeight="SemiBold" BorderThickness="0"/>
+                <Button Command="{Binding ShowImpactManageCommand}" 
+                        Content="Impact Manage" 
+                        Margin="5" Padding="15,8" 
+                        Background="White" FontWeight="SemiBold" BorderThickness="0"/>
+                <Button Command="{Binding ShowActionManageCommand}" 
+                        Content="Action Manage" 
+                        Margin="5" Padding="15,8" 
+                        Background="White" FontWeight="SemiBold" BorderThickness="0"/>
+                <Button Command="{Binding ShowImpactExecuteCommand}" 
+                        Content="Impact Execute" 
+                        Margin="5" Padding="15,8" 
+                        Background="White" FontWeight="SemiBold" BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Content Area -->
+        <ContentControl Grid.Row="1" Content="{Binding CurrentView}" />
+    </Grid>
+</Window>

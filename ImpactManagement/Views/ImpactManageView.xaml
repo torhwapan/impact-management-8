@@ -1,0 +1,56 @@
+<UserControl x:Class="ImpactManagement.Views.ImpactManageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1200">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="Impact Management" 
+                   FontSize="24" FontWeight="Bold" Margin="0,0,0,15"/>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Data Grid -->
+            <DataGrid Grid.Row="0" 
+                      ItemsSource="{Binding Impacts}"
+                      SelectedItem="{Binding SelectedImpact}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Scene Name" Binding="{Binding SceneName}" Width="*"/>
+                    <DataGridTextColumn Header="Impact Name" Binding="{Binding ImpactName}" Width="*"/>
+                    <DataGridTextColumn Header="SQL" Binding="{Binding Sql}" Width="2*"/>
+                    <DataGridTextColumn Header="Group Field" Binding="{Binding GroupField}" Width="Auto"/>
+                    <DataGridTextColumn Header="Connect Name" Binding="{Binding ConnectName}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Action Buttons -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                <Button Command="{Binding AddCommand}" Content="Add" Width="100" Height="35" 
+                        Margin="0,0,10,0" Background="#4CAF50" Foreground="White" 
+                        FontWeight="SemiBold" BorderThickness="0"/>
+                <Button Command="{Binding EditCommand}" Content="Edit" Width="100" Height="35" 
+                        Margin="0,0,10,0" Background="#2196F3" Foreground="White" 
+                        FontWeight="SemiBold" BorderThickness="0"/>
+                <Button Command="{Binding DeleteCommand}" Content="Delete" Width="100" Height="35" 
+                        Background="#F44336" Foreground="White" 
+                        FontWeight="SemiBold" BorderThickness="0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
